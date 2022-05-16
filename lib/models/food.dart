@@ -1,6 +1,7 @@
 import 'package:ffuf_20220513_recipe_app/enums/enums.dart';
+import 'package:flutter/material.dart';
 
-class Food {
+class Food with ChangeNotifier {
   final String id;
   final String name;
   final String imageUrl;
