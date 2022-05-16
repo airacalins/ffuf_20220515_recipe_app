@@ -1,10 +1,11 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, constant_identifier_names
 
-import 'package:ffuf_20220513_recipe_app/providers/providers.dart';
-import 'package:ffuf_20220513_recipe_app/widgets/badge/badge.dart';
 import 'package:flutter/material.dart';
-import 'package:ffuf_20220513_recipe_app/widgets/widgets.dart';
 import 'package:provider/provider.dart';
+
+import 'package:ffuf_20220513_recipe_app/providers/providers.dart';
+import 'package:ffuf_20220513_recipe_app/screens/screens.dart';
+import 'package:ffuf_20220513_recipe_app/widgets/widgets.dart';
 
 enum FilterOptions {
   All,
@@ -30,10 +31,11 @@ class _FoodsOverviewScreenState extends State<FoodsOverviewScreen> {
           Consumer<Groceries>(
             builder: (context, groceryData, child) => Badge(
               child: IconButton(
-                onPressed: () {},
+                onPressed: () =>
+                    Navigator.of(context).pushNamed(GroceriesScreen.routeName),
                 icon: Icon(Icons.shopping_basket_outlined),
               ),
-              value: groceryData.totalItems.toString(),
+              value: "${groceryData.totalItems}",
             ),
           ),
           PopupMenuButton(

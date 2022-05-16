@@ -30,7 +30,10 @@ class MyApp extends StatelessWidget {
               fontFamily: 'Poppins',
               scaffoldBackgroundColor: Colors.white),
           home: FoodsOverviewScreen(),
-          routes: {FoodDetailsScreen.routeName: (ctx) => FoodDetailsScreen()},
+          routes: {
+            FoodDetailsScreen.routeName: (_) => FoodDetailsScreen(),
+            GroceriesScreen.routeName: (_) => GroceriesScreen(),
+          },
         );
       },
     );

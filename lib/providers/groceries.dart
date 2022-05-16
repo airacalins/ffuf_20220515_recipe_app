@@ -2,17 +2,17 @@
 
 import 'package:flutter/material.dart';
 
-class GroceryItem {
+class Grocery {
   String name;
   int quantity;
 
-  GroceryItem(this.name, this.quantity);
+  Grocery(this.name, this.quantity);
 }
 
 class Groceries with ChangeNotifier {
-  List<GroceryItem> _groceries = List.empty(growable: true);
+  List<Grocery> _groceries = List.empty(growable: true);
 
-  List<GroceryItem> get groceries => [..._groceries];
+  List<Grocery> get groceries => [..._groceries];
 
   int get totalItems {
     return _groceries.fold(0,
@@ -25,7 +25,7 @@ class Groceries with ChangeNotifier {
       _groceries[existingGroceryIndex].quantity =
           _groceries[existingGroceryIndex].quantity + 1;
     } else {
-      _groceries.add(GroceryItem(name, 1));
+      _groceries.add(Grocery(name, 1));
     }
     notifyListeners();
   }

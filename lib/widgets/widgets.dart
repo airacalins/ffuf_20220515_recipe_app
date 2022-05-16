@@ -1,3 +1,4 @@
+export 'package:ffuf_20220513_recipe_app/widgets/badge/badge.dart';
 export 'package:ffuf_20220513_recipe_app/widgets/home/home_banner.dart';
 export 'package:ffuf_20220513_recipe_app/widgets/food/foods_grid.dart';
 export 'package:ffuf_20220513_recipe_app/widgets/food/food_item.dart';
