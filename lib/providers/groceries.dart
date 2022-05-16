@@ -12,6 +12,8 @@ class Grocery {
 class Groceries with ChangeNotifier {
   List<Grocery> _groceries = List.empty(growable: true);
 
+  List<Grocery> _previousData = List.empty(growable: true);
+
   List<Grocery> get groceries => [..._groceries];
 
   int get totalItems {
@@ -19,7 +21,7 @@ class Groceries with ChangeNotifier {
         (previousValue, groceryItem) => previousValue + groceryItem.quantity);
   }
 
-  void addItem(String name) {
+  void addGrocery(String name) {
     var existingGroceryIndex = _groceries.indexWhere((g) => g.name == name);
     if (existingGroceryIndex > -1) {
       _groceries[existingGroceryIndex].quantity =
@@ -30,9 +32,23 @@ class Groceries with ChangeNotifier {
     notifyListeners();
   }
 
-  void addItems(List<String> items) {
+  void addGroceries(List<String> items) {
     items.forEach((item) {
-      addItem(item);
+      addGrocery(item);
     });
+    notifyListeners();
+  }
+
+  void removeGrocery(Grocery grocery) {
+    _previousData = [..._groceries];
+    var existingGroceryIndex =
+        _groceries.indexWhere((g) => g.name == grocery.name);
+    _groceries.removeAt(existingGroceryIndex);
+    notifyListeners();
+  }
+
+  void undo() {
+    _groceries = [..._previousData];
+    notifyListeners();
   }
 }

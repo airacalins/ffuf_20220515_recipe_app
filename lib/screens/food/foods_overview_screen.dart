@@ -24,7 +24,6 @@ class _FoodsOverviewScreenState extends State<FoodsOverviewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
         title: Text('Recipe App'),
         // ignore: prefer_const_literals_to_create_immutables
         actions: [

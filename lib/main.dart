@@ -22,13 +22,57 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-              colorScheme: ColorScheme.fromSwatch().copyWith(
-                  primary: Colors.white,
-                  onPrimary: Colors.black,
-                  secondary: Colors.white,
-                  onSecondary: Colors.amber),
-              fontFamily: 'Poppins',
-              scaffoldBackgroundColor: Colors.white),
+            appBarTheme: AppBarTheme(
+              backgroundColor: Colors.white,
+              elevation: 0,
+            ),
+            colorScheme: ColorScheme.fromSwatch().copyWith(
+              primary: Colors.amber,
+              onPrimary: Colors.black,
+              secondary: Colors.white,
+              onSecondary: Colors.amber,
+            ),
+            fontFamily: 'Poppins',
+            scaffoldBackgroundColor: Colors.white,
+            textTheme: const TextTheme(
+              headline1: TextStyle(
+                fontSize: 32.0,
+                color: Colors.black87,
+                fontWeight: FontWeight.w600,
+              ),
+              headline2: TextStyle(
+                fontSize: 24.0,
+                color: Colors.black87,
+                fontWeight: FontWeight.w600,
+              ),
+              headline3: TextStyle(
+                fontSize: 18.0,
+                color: Colors.black87,
+                fontWeight: FontWeight.w500,
+              ),
+              headline4: TextStyle(
+                fontSize: 16.0,
+                color: Colors.black87,
+                fontWeight: FontWeight.w500,
+              ),
+              headline5: TextStyle(
+                fontSize: 13.5,
+                color: Colors.black87,
+                fontWeight: FontWeight.w500,
+              ),
+              bodyText2: TextStyle(
+                fontSize: 14.0,
+                color: Colors.black87,
+                fontFamily: 'Poppins',
+              ),
+              subtitle1: TextStyle(
+                fontFamily: 'Poppins',
+                fontSize: 14.0,
+                fontWeight: FontWeight.w600,
+                color: Colors.black54,
+              ),
+            ),
+          ),
           home: FoodsOverviewScreen(),
           routes: {
             FoodDetailsScreen.routeName: (_) => FoodDetailsScreen(),

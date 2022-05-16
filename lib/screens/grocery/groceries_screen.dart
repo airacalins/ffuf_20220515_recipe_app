@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:ffuf_20220513_recipe_app/providers/providers.dart';
+import 'package:ffuf_20220513_recipe_app/screens/grocery/empty_grocery_screen.dart';
 import 'package:ffuf_20220513_recipe_app/widgets/grocery/grocery_item.dart';
+import 'package:ffuf_20220513_recipe_app/widgets/headline/headline_5.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -18,12 +20,13 @@ class GroceriesScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Your Cart'),
-        elevation: 0,
       ),
-      body: ListView.builder(
-        itemBuilder: (context, index) => GroceryItem(groceries[index]),
-        itemCount: groceries.length,
-      ),
+      body: groceries.isNotEmpty
+          ? ListView.builder(
+              itemBuilder: (context, index) => GroceryItem(groceries[index]),
+              itemCount: groceries.length,
+            )
+          : EmptyGroceryScreen(),
     );
   }
 }
