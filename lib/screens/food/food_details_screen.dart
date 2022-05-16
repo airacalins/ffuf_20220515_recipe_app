@@ -18,7 +18,9 @@ class FoodDetailsScreen extends StatelessWidget {
     ).findById(foodId);
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        elevation: 0,
+      ),
       body: Center(
         child: Text(food.name),
       ),

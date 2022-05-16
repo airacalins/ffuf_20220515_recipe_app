@@ -119,6 +119,10 @@ class Foods with ChangeNotifier {
     return [..._foods];
   }
 
+  List<Food> get favoriteFoods {
+    return _foods.where((food) => food.isFavorite).toList();
+  }
+
   Food findById(String id) {
     return _foods.firstWhere((food) => food.id == id);
   }

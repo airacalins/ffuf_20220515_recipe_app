@@ -31,4 +31,9 @@ class Food with ChangeNotifier {
     required this.instructions,
     this.isFavorite = false,
   });
+
+  void toggleFavorite() {
+    isFavorite = !isFavorite;
+    notifyListeners();
+  }
 }
