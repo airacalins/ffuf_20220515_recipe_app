@@ -10,38 +10,32 @@ class GroceryItem extends StatelessWidget {
 
   GroceryItem(this.grocery, {Key? key}) : super(key: key);
 
-  // final snackBar = SnackBar(
-  //   content: Text('Successfully removed.'),
-  //   backgroundColor: Colors.green,
-  //   duration: Duration(seconds: 2),
-  //   action: SnackBarAction(
-  //     onPressed: () {
-  //       Provider.of<Groceries>(context, listen: false).removeGrocery(grocery);
-  //     },
-  //     label: 'Undo',
-  //     textColor: Colors.white,
-  //   ),
-  // );
-
   @override
   Widget build(BuildContext context) {
+    final undoSnackBar = SnackBar(
+      content: Text('Successfully undo.'),
+      backgroundColor: Colors.green,
+      duration: Duration(seconds: 1),
+    );
+
+    final removedSnackBar = SnackBar(
+      content: Text('Successfully removed.'),
+      backgroundColor: Colors.green,
+      duration: Duration(seconds: 1),
+      action: SnackBarAction(
+        onPressed: () {
+          Provider.of<Groceries>(context, listen: false).undo();
+          ScaffoldMessenger.of(context).showSnackBar(undoSnackBar);
+        },
+        label: 'Undo',
+        textColor: Colors.white,
+      ),
+    );
+
     return Dismissible(
       onDismissed: (direction) {
         Provider.of<Groceries>(context, listen: false).removeGrocery(grocery);
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Successfully removed.'),
-            backgroundColor: Colors.green,
-            duration: Duration(seconds: 2),
-            action: SnackBarAction(
-              onPressed: () {
-                Provider.of<Groceries>(context, listen: false).undo();
-              },
-              label: 'Undo',
-              textColor: Colors.white,
-            ),
-          ),
-        );
+        ScaffoldMessenger.of(context).showSnackBar(removedSnackBar);
       },
       key: UniqueKey(),
       direction: DismissDirection.endToStart,

@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+            secondaryHeaderColor: Colors.amber.shade900,
             appBarTheme: AppBarTheme(
               backgroundColor: Colors.white,
               elevation: 0,

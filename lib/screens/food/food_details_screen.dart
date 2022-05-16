@@ -14,7 +14,7 @@ class FoodDetailsScreen extends StatelessWidget {
   final snackBar = SnackBar(
     content: Text('Successfully added to grocery list'),
     backgroundColor: Colors.green,
-    duration: Duration(seconds: 2),
+    duration: Duration(seconds: 1),
     action: SnackBarAction(
       onPressed: () {},
       label: 'Undo',

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, curly_braces_in_flow_control_structures
 
 import 'package:ffuf_20220513_recipe_app/models/models.dart';
 import 'package:ffuf_20220513_recipe_app/screens/screens.dart';
@@ -10,6 +10,12 @@ class FoodItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final favoriteSnackBar = SnackBar(
+      content: Text('Added to favorites.'),
+      backgroundColor: Colors.green,
+      duration: Duration(seconds: 1),
+    );
+
     final food = Provider.of<Food>(context, listen: false);
 
     return GestureDetector(
@@ -33,6 +39,9 @@ class FoodItem extends StatelessWidget {
                     food.isFavorite ? Icons.favorite : Icons.favorite_border),
                 onPressed: () {
                   food.toggleFavorite();
+                  if (food.isFavorite)
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(favoriteSnackBar);
                 },
               );
             }),
