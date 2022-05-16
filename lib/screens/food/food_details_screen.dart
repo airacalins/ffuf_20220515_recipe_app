@@ -15,10 +15,10 @@ class FoodDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final foodId = ModalRoute.of(context)!.settings.arguments as String;
-    final Food food = Provider.of<Foods>(
-      context,
-      listen: false,
-    ).findById(foodId);
+    final Food food =
+        Provider.of<Foods>(context, listen: false).findById(foodId);
+
+    final Groceries groceries = Provider.of<Groceries>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -41,6 +41,12 @@ class FoodDetailsScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  IconButton(
+                    onPressed: () {
+                      groceries.addItems(food.ingredients);
+                    },
+                    icon: Icon(Icons.add_circle),
+                  ),
                   Headline5(food.name),
                   Chip(label: Text(food.courseText)),
                   Divider(),

@@ -22,12 +22,13 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            colorScheme: ColorScheme.fromSwatch().copyWith(
-              primary: Colors.white,
-              onPrimary: Colors.amber.shade900,
-            ),
-            fontFamily: 'Poppins',
-          ),
+              colorScheme: ColorScheme.fromSwatch().copyWith(
+                  primary: Colors.white,
+                  onPrimary: Colors.black,
+                  secondary: Colors.white,
+                  onSecondary: Colors.amber),
+              fontFamily: 'Poppins',
+              scaffoldBackgroundColor: Colors.white),
           home: FoodsOverviewScreen(),
           routes: {FoodDetailsScreen.routeName: (ctx) => FoodDetailsScreen()},
         );
