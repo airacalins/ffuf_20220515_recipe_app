@@ -1,4 +1,5 @@
 import 'package:ffuf_20220513_recipe_app/enums/enums.dart';
+import 'package:ffuf_20220513_recipe_app/models/cuisine.dart';
 import 'package:flutter/material.dart';
 
 class Food with ChangeNotifier {
@@ -31,6 +32,29 @@ class Food with ChangeNotifier {
     required this.instructions,
     this.isFavorite = false,
   });
+
+  String get courseText {
+    switch (course) {
+      case Courses.Appetizer:
+        return 'Appetizer';
+      case Courses.Dessert:
+        return 'Dessert';
+      case Courses.Drinks:
+        return 'Drinks';
+      case Courses.MainDish:
+        return 'Main Dish';
+      case Courses.Rice:
+        return 'Rice';
+      case Courses.Salad:
+        return 'Salad';
+      case Courses.SideDish:
+        return 'Side Dish';
+      case Courses.Soup:
+        return 'Soup';
+      default:
+        return 'Not in the courses';
+    }
+  }
 
   void toggleFavorite() {
     isFavorite = !isFavorite;

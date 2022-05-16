@@ -13,8 +13,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => Foods(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: ((_) => Foods())),
+        ChangeNotifierProvider(create: ((_) => Groceries())),
+      ],
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -22,7 +25,6 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSwatch().copyWith(
               primary: Colors.white,
               onPrimary: Colors.amber.shade900,
-              // secondary: Colors.amber.shade900,
             ),
             fontFamily: 'Poppins',
           ),

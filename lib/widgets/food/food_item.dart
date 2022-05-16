@@ -6,8 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class FoodItem extends StatelessWidget {
-  // final Food food;
-  // const FoodItem(this.food, {Key? key}) : super(key: key);
+  const FoodItem({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
