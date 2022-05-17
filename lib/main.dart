@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:ffuf_20220513_recipe_app/providers/providers.dart';
 import 'package:ffuf_20220513_recipe_app/screens/screens.dart';
 
+import 'enums/courses.dart';
+
 void main() {
   runApp(MyApp());
 }
