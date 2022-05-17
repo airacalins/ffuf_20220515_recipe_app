@@ -23,53 +23,53 @@ class _FoodsOverviewScreenState extends State<FoodsOverviewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          // ignore: prefer_const_literals_to_create_immutables
-          actions: [
-            Consumer<Groceries>(
-              builder: (context, groceryData, child) => Badge(
-                child: IconButton(
-                  onPressed: () => Navigator.of(context)
-                      .pushNamed(GroceriesScreen.routeName),
-                  icon: Icon(Icons.shopping_basket_outlined),
-                ),
-                value: "${groceryData.totalItems}",
+      appBar: AppBar(
+        actions: [
+          Consumer<Groceries>(
+            builder: (context, groceryData, child) => Badge(
+              child: IconButton(
+                onPressed: () =>
+                    Navigator.of(context).pushNamed(GroceriesScreen.routeName),
+                icon: Icon(Icons.shopping_basket_outlined),
               ),
+              value: "${groceryData.totalItems}",
             ),
-            PopupMenuButton(
-              onSelected: (FilterOptions selectedValue) {
-                setState(() {
-                  if (selectedValue == FilterOptions.Favorites) {
-                    _showFavorites = true;
-                  } else {
-                    _showFavorites = false;
-                  }
-                });
-              },
-              icon: Icon(Icons.more_vert),
-              itemBuilder: (_) => [
-                PopupMenuItem(
-                  child: Text('Show All'),
-                  value: FilterOptions.All,
-                ),
-                PopupMenuItem(
-                  child: Text('Favorites'),
-                  value: FilterOptions.Favorites,
-                )
-              ],
-            ),
-          ],
-        ),
-        body: Column(
-          children: [
-            HomeBanner(),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: FoodsGrid(_showFavorites),
+          ),
+          PopupMenuButton(
+            onSelected: (FilterOptions selectedValue) {
+              setState(() {
+                if (selectedValue == FilterOptions.Favorites) {
+                  _showFavorites = true;
+                } else {
+                  _showFavorites = false;
+                }
+              });
+            },
+            icon: Icon(Icons.more_vert),
+            itemBuilder: (_) => [
+              PopupMenuItem(
+                child: Text('Show All'),
+                value: FilterOptions.All,
               ),
+              PopupMenuItem(
+                child: Text('Favorites'),
+                value: FilterOptions.Favorites,
+              )
+            ],
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+          HomeBanner(),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: FoodsGrid(_showFavorites),
             ),
-          ],
-        ));
+          ),
+        ],
+      ),
+    );
   }
 }

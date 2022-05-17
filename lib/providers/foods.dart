@@ -10,7 +10,7 @@ class Foods with ChangeNotifier {
       imageUrl:
           'https://images.pexels.com/photos/9671541/pexels-photo-9671541.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
       course: Courses.MainDish,
-      cuisineId: 's7',
+      cuisine: Cuisine.Greek,
       difficulty: Difficulty.Challenging,
       affordability: Affordability.Expensive,
       preparationTime: '25 minutes',
@@ -36,7 +36,7 @@ class Foods with ChangeNotifier {
       imageUrl:
           'https://panlasangpinoy.com/wp-content/uploads/2018/11/Sinigang-na-Baboy-Recipe.jpg',
       course: Courses.MainDish,
-      cuisineId: 's6',
+      cuisine: Cuisine.Filipino,
       difficulty: Difficulty.EasyPeasy,
       affordability: Affordability.Pricey,
       preparationTime: '30 minutes',
@@ -75,7 +75,7 @@ class Foods with ChangeNotifier {
       imageUrl:
           'https://cdn.pixabay.com/photo/2018/07/18/06/36/egg-net-3545650_1280.jpg',
       course: Courses.MainDish,
-      cuisineId: 's13',
+      cuisine: Cuisine.Thai,
       difficulty: Difficulty.Challenging,
       affordability: Affordability.Pricey,
       preparationTime: '20 minutes',

@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:ffuf_20220513_recipe_app/models/models.dart';
+import 'package:ffuf_20220513_recipe_app/widgets/food/oval_icon_detail.dart';
+import 'package:ffuf_20220513_recipe_app/widgets/item/bullet_item.dart';
 import 'package:ffuf_20220513_recipe_app/widgets/subtitle/subtitle_1.dart';
 import 'package:ffuf_20220513_recipe_app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -32,62 +34,67 @@ class FoodDetailsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        children: [
-          SizedBox(
-            width: double.infinity,
-            height: 300,
-            child: Image(
-              image: NetworkImage(food.imageUrl),
-              fit: BoxFit.cover,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Column(
+              children: [
+                SizedBox(
+                  width: double.infinity,
+                  height: 250,
+                  child: Image(
+                    image: NetworkImage(food.imageUrl),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                  width: double.infinity,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Headline2(food.name),
+                      Headline5(food.cuisineText),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ),
-          SingleChildScrollView(
-            child: Container(
-              margin: EdgeInsets.all(15),
+            SizedBox(
+              height: 15,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                OvalIconDetail(
+                  icon: Icons.access_time,
+                  title: food.preparationTime,
+                ),
+                OvalIconDetail(
+                  icon: Icons.outdoor_grill_outlined,
+                  title: food.cookingTime,
+                ),
+                OvalIconDetail(
+                    icon: Icons.restaurant, title: "${food.servings} servings"),
+                OvalIconDetail(
+                  icon: Icons.restart_alt_outlined,
+                  title: food.difficultyText,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 15),
               width: double.infinity,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Headline2(food.name),
-                  Divider(),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.list_alt,
-                              color: Theme.of(context).colorScheme.onPrimary,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: Text(food.preparationTime),
-                            )
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.timelapse,
-                              color: Theme.of(context).colorScheme.onPrimary,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: Text(food.cookingTime),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  Divider(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Subtitle1('INGREDIENTS'),
+                      Subtitle1('Ingredients'),
                       IconButton(
                         onPressed: () {
                           groceries.addGroceries(food.ingredients);
@@ -99,30 +106,35 @@ class FoodDetailsScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Divider(),
-
-                  // Container(
-                  //   padding: EdgeInsets.all(10),
-                  //   child: ListView.builder(
-                  //     itemBuilder: (_, index) => Text(food.ingredients[index]),
-                  //     itemCount: food.ingredients.length,
-                  //   ),
-                  // ),
-                  Divider(),
-                  Subtitle1('INSTRUCTIONS'),
-
-                  // ListView(
-                  //   children: food.ingredients.map((f) => Text(f)).toList(),
-                  // )
-                  // ListView.builder(
-                  //   itemBuilder: (context, index) =>
-                  //       InstructionItem(food.instructions[index]),
-                  // )
                 ],
               ),
             ),
-          )
-        ],
+            ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemBuilder: (_, index) => BulletItem(food.ingredients[index]),
+              itemCount: food.ingredients.length,
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Container(
+              alignment: Alignment.centerLeft,
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+              child: Subtitle1('Instructions'),
+            ),
+            ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemBuilder: (_, index) => BulletItem(food.instructions[index]),
+              itemCount: food.instructions.length,
+            ),
+            SizedBox(
+              height: 15,
+            ),
+          ],
+        ),
       ),
     );
   }
