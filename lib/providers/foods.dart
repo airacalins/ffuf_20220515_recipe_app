@@ -13,8 +13,8 @@ class Foods with ChangeNotifier {
       cuisine: Cuisine.Greek,
       difficulty: Difficulty.Challenging,
       affordability: Affordability.Expensive,
-      preparationTime: '25 minutes',
-      cookingTime: '10 minutes',
+      preparationTime: 25,
+      cookingTime: 10,
       servings: 3,
       isFavorite: false,
       ingredients: [
@@ -39,8 +39,8 @@ class Foods with ChangeNotifier {
       cuisine: Cuisine.Filipino,
       difficulty: Difficulty.EasyPeasy,
       affordability: Affordability.Pricey,
-      preparationTime: '30 minutes',
-      cookingTime: '10 minutes',
+      preparationTime: 30,
+      cookingTime: 10,
       servings: 6,
       isFavorite: false,
       ingredients: [
@@ -78,8 +78,8 @@ class Foods with ChangeNotifier {
       cuisine: Cuisine.Thai,
       difficulty: Difficulty.Challenging,
       affordability: Affordability.Pricey,
-      preparationTime: '20 minutes',
-      cookingTime: '10 minutes',
+      preparationTime: 20,
+      cookingTime: 10,
       servings: 2,
       isFavorite: true,
       ingredients: [
@@ -129,6 +129,12 @@ class Foods with ChangeNotifier {
 
   void createFood(Food food) {
     _foods.add(food);
+    notifyListeners();
+  }
+
+  void deleteFood(String id) {
+    var foodIndex = _foods.indexWhere((food) => food.id == id);
+    _foods.removeAt(foodIndex);
     notifyListeners();
   }
 }

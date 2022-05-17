@@ -68,11 +68,11 @@ class FoodDetailsScreen extends StatelessWidget {
               children: [
                 OvalIconDetail(
                   icon: Icons.access_time,
-                  title: food.preparationTime,
+                  title: '${food.preparationTime} mins.',
                 ),
                 OvalIconDetail(
                   icon: Icons.outdoor_grill_outlined,
-                  title: food.cookingTime,
+                  title: '${food.cookingTime} mins.',
                 ),
                 OvalIconDetail(
                     icon: Icons.restaurant, title: "${food.servings} servings"),

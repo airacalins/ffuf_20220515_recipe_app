@@ -10,8 +10,8 @@ class Food with ChangeNotifier {
   final Cuisine cuisine;
   final Difficulty difficulty;
   final Affordability affordability;
-  final String preparationTime;
-  final String cookingTime;
+  final int preparationTime;
+  final int cookingTime;
   final int servings;
   final List<String> ingredients;
   final List<String> instructions;
