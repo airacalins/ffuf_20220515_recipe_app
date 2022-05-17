@@ -59,13 +59,14 @@ class _FoodsOverviewScreenState extends State<FoodsOverviewScreen> {
           ),
         ],
       ),
+      drawer: SideDrawer(),
       body: Column(
         children: [
           HomeBanner(),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(15.0),
-              child: FoodsGrid(_showFavorites),
+              child: FoodGridList(_showFavorites),
             ),
           ),
         ],

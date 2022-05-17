@@ -1,8 +1,9 @@
 // ignore_for_file: prefer_const_constructors
-import 'package:ffuf_20220513_recipe_app/providers/providers.dart';
-import 'package:ffuf_20220513_recipe_app/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'package:ffuf_20220513_recipe_app/providers/providers.dart';
+import 'package:ffuf_20220513_recipe_app/screens/screens.dart';
 
 void main() {
   runApp(MyApp());
@@ -78,8 +79,10 @@ class MyApp extends StatelessWidget {
           // initialRoute: '/',
           routes: {
             // '/': (_) => FoodsOverviewScreen(),
+            FoodsScreen.routeName: (_) => FoodsScreen(),
             FoodDetailsScreen.routeName: (_) => FoodDetailsScreen(),
             GroceriesScreen.routeName: (_) => GroceriesScreen(),
+            CreateFoodScreen.routeName: (_) => CreateFoodScreen(),
           },
         );
       },

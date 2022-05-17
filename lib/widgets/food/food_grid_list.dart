@@ -3,9 +3,9 @@ import 'package:ffuf_20220513_recipe_app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class FoodsGrid extends StatelessWidget {
+class FoodGridList extends StatelessWidget {
   final bool showFavorites;
-  const FoodsGrid(
+  const FoodGridList(
     this.showFavorites, {
     Key? key,
   }) : super(key: key);
@@ -19,7 +19,7 @@ class FoodsGrid extends StatelessWidget {
       itemCount: foods.length,
       itemBuilder: (context, index) => ChangeNotifierProvider.value(
         value: foods[index],
-        builder: (context, child) => FoodItem(),
+        builder: (context, child) => const FoodItem(),
       ),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,

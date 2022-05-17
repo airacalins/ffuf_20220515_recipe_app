@@ -1,14 +1,14 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:ffuf_20220513_recipe_app/providers/providers.dart';
-import 'package:ffuf_20220513_recipe_app/screens/grocery/empty_grocery_screen.dart';
-import 'package:ffuf_20220513_recipe_app/widgets/grocery/grocery_item.dart';
-import 'package:ffuf_20220513_recipe_app/widgets/headline/headline_5.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'package:ffuf_20220513_recipe_app/providers/providers.dart';
+import 'package:ffuf_20220513_recipe_app/screens/grocery/empty_grocery_screen.dart';
+import 'package:ffuf_20220513_recipe_app/widgets/grocery/grocery_item.dart';
+
 class GroceriesScreen extends StatelessWidget {
-  static String routeName = '/groceries';
+  static String routeName = '/grocery';
 
   const GroceriesScreen({Key? key}) : super(key: key);
 

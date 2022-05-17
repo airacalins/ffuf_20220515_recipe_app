@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 import 'package:ffuf_20220513_recipe_app/providers/providers.dart';
 
 class FoodDetailsScreen extends StatelessWidget {
-  static String routeName = '/food-detail';
+  static String routeName = '/food/details';
 
   final snackBar = SnackBar(
     content: Text('Successfully added to grocery list'),
