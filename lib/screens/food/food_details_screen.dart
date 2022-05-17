@@ -16,10 +16,10 @@ class FoodDetailsScreen extends StatelessWidget {
   final snackBar = SnackBar(
     content: Text('Successfully added to grocery list'),
     backgroundColor: Colors.green,
-    duration: Duration(seconds: 1),
+    duration: Duration(seconds: 2),
     action: SnackBarAction(
       onPressed: () {},
-      label: 'Undo',
+      label: 'UNDO',
       textColor: Colors.white,
     ),
   );
@@ -98,6 +98,7 @@ class FoodDetailsScreen extends StatelessWidget {
                       IconButton(
                         onPressed: () {
                           groceries.addGroceries(food.ingredients);
+                          ScaffoldMessenger.of(context).hideCurrentSnackBar();
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         },
                         icon: Icon(

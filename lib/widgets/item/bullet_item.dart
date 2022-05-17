@@ -8,7 +8,7 @@ class BulletItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 30),
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Row(
         children: [
           Padding(
@@ -20,8 +20,11 @@ class BulletItem extends StatelessWidget {
             ),
           ),
           Flexible(
-            child: Text(
-              text,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 5.0),
+              child: Text(
+                text,
+              ),
             ),
           )
         ],

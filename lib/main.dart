@@ -75,7 +75,9 @@ class MyApp extends StatelessWidget {
             ),
           ),
           home: FoodsOverviewScreen(),
+          // initialRoute: '/',
           routes: {
+            // '/': (_) => FoodsOverviewScreen(),
             FoodDetailsScreen.routeName: (_) => FoodDetailsScreen(),
             GroceriesScreen.routeName: (_) => GroceriesScreen(),
           },

@@ -1,3 +1,4 @@
+import 'package:ffuf_20220513_recipe_app/screens/screens.dart';
 import 'package:ffuf_20220513_recipe_app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,9 @@ class EmptyGroceryScreen extends StatelessWidget {
             height: 5,
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed(FoodDetailsScreen.routeName);
+            },
             child: const Text('Browse Recipes'),
           )
         ],

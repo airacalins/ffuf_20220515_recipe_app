@@ -13,7 +13,7 @@ class FoodItem extends StatelessWidget {
     final favoriteSnackBar = SnackBar(
       content: Text('Added to favorites.'),
       backgroundColor: Colors.green,
-      duration: Duration(seconds: 1),
+      duration: Duration(seconds: 2),
     );
 
     final food = Provider.of<Food>(context, listen: false);
@@ -39,9 +39,11 @@ class FoodItem extends StatelessWidget {
                     food.isFavorite ? Icons.favorite : Icons.favorite_border),
                 onPressed: () {
                   food.toggleFavorite();
-                  if (food.isFavorite)
+                  if (food.isFavorite) {
+                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
                     ScaffoldMessenger.of(context)
                         .showSnackBar(favoriteSnackBar);
+                  }
                 },
               );
             }),
