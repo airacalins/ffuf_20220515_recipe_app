@@ -13,6 +13,8 @@ enum FilterOptions {
 }
 
 class FoodsOverviewScreen extends StatefulWidget {
+  static const routeName = '/food/overview';
+
   @override
   State<FoodsOverviewScreen> createState() => _FoodsOverviewScreenState();
 }
@@ -28,8 +30,7 @@ class _FoodsOverviewScreenState extends State<FoodsOverviewScreen> {
           Consumer<Groceries>(
             builder: (context, groceryData, child) => Badge(
               child: IconButton(
-                onPressed: () =>
-                    Navigator.of(context).pushNamed(GroceriesScreen.routeName),
+                onPressed: () => Navigator.of(context).pushNamed(GroceriesScreen.routeName),
                 icon: Icon(Icons.shopping_basket_outlined),
               ),
               value: "${groceryData.totalItems}",

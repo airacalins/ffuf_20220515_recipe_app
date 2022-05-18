@@ -20,7 +20,7 @@ class SideDrawer extends StatelessWidget {
             leading: Icon(Icons.list),
             title: Text('Recipes Overview'),
             onTap: () {
-              Navigator.of(context).pushReplacementNamed('/');
+              Navigator.of(context).pushReplacementNamed(FoodsOverviewScreen.routeName);
             },
           ),
           Divider(),
