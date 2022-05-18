@@ -21,8 +21,7 @@ class FoodsScreen extends StatelessWidget {
         title: const Text('Your Recipes'),
         actions: [
           IconButton(
-            onPressed: () =>
-                Navigator.of(context).pushNamed(CreateFoodScreen.routeName),
+            onPressed: () => Navigator.of(context).pushNamed(CreateFoodScreen.routeName),
             icon: const Icon(Icons.add),
           ),
         ],
@@ -30,9 +29,7 @@ class FoodsScreen extends StatelessWidget {
       drawer: SideDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
-        child: ListView.builder(
-            itemCount: foods.length,
-            itemBuilder: (_, index) => FoodListItem(foods[index])),
+        child: ListView.builder(itemCount: foods.length, itemBuilder: (_, index) => FoodListItem(foods[index])),
       ),
     );
   }

@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_final_fields
 
 import 'package:ffuf_20220513_recipe_app/providers/providers.dart';
+import 'package:ffuf_20220513_recipe_app/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:ffuf_20220513_recipe_app/models/models.dart';
 import 'package:provider/provider.dart';
@@ -25,8 +26,7 @@ class FoodListItem extends StatelessWidget {
         onDismissed: (direction) {
           ScaffoldMessenger.of(context).hideCurrentSnackBar();
           foodData.deleteFood(food.id);
-          ScaffoldMessenger.of(context)
-              .showSnackBar(_successfullyDeletedSnackbar);
+          ScaffoldMessenger.of(context).showSnackBar(_successfullyDeletedSnackbar);
         },
         key: UniqueKey(),
         direction: DismissDirection.endToStart,
@@ -40,6 +40,7 @@ class FoodListItem extends StatelessWidget {
           padding: const EdgeInsets.only(right: 20),
         ),
         child: ListTile(
+          onTap: () => Navigator.of(context).pushNamed(FoodDetailsScreen.routeName, arguments: food.id),
           leading: CircleAvatar(
             backgroundImage: NetworkImage(food.imageUrl),
           ),
