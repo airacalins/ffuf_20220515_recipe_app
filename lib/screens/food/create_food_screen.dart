@@ -8,6 +8,7 @@ import 'package:ffuf_20220513_recipe_app/forms/form_dropdown.dart';
 import 'package:ffuf_20220513_recipe_app/forms/form_image_input.dart';
 import 'package:ffuf_20220513_recipe_app/forms/form_input.dart';
 import 'package:ffuf_20220513_recipe_app/models/models.dart';
+import 'package:ffuf_20220513_recipe_app/screens/screens.dart';
 import 'package:ffuf_20220513_recipe_app/widgets/headline/headline_5.dart';
 import 'package:ffuf_20220513_recipe_app/widgets/subtitle/subtitle_1.dart';
 import 'package:flutter/material.dart';
@@ -125,9 +126,7 @@ class _CreateFoodScreenState extends State<CreateFoodScreen> {
   void _handleAddingIngredients() {
     setState(() {
       if (_ingredientsController.text.isNotEmpty) {
-        if (!_ingredients.any((element) =>
-            element.toLowerCase() ==
-            _ingredientsController.text.toLowerCase())) {
+        if (!_ingredients.any((element) => element.toLowerCase() == _ingredientsController.text.toLowerCase())) {
           _ingredients.add(_ingredientsController.text);
           _ingredientsController.text = "";
         }
@@ -138,9 +137,7 @@ class _CreateFoodScreenState extends State<CreateFoodScreen> {
   void _handleAddingInstructions() {
     setState(() {
       if (_instructionController.text.isNotEmpty) {
-        if (!_instructions.any((element) =>
-            element.toLowerCase() ==
-            _instructionController.text.toLowerCase())) {
+        if (!_instructions.any((element) => element.toLowerCase() == _instructionController.text.toLowerCase())) {
           _instructions.add(_instructionController.text);
           _instructionController.text = "";
         }
@@ -169,7 +166,7 @@ class _CreateFoodScreenState extends State<CreateFoodScreen> {
       );
 
       foodsData.createFood(newRecipe);
-      Navigator.of(context).pushNamed('/');
+      Navigator.of(context).pushNamed(FoodsOverviewScreen.routeName);
 
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(_successfullyAddedSnackbar);
@@ -186,29 +183,24 @@ class _CreateFoodScreenState extends State<CreateFoodScreen> {
             FormImageInput(
               title: 'Image URL',
               controller: _imageUrlController,
-              imageUrl: _imageUrlController.text.isEmpty
-                  ? 'https://cdn2.vectorstock.com/i/thumb-large/48/06/image-preview-icon-picture-placeholder-vector-31284806.jpg'
-                  : _imageUrlController.text,
+              imageUrl: _imageUrlController.text.isEmpty ? 'https://cdn2.vectorstock.com/i/thumb-large/48/06/image-preview-icon-picture-placeholder-vector-31284806.jpg' : _imageUrlController.text,
             ),
             Divider(),
             FormInput(
               title: 'Title',
               controller: _titleController,
-              handleFieldSubmitted: () =>
-                  FocusScope.of(context).requestFocus(_servingFocusNode),
+              handleFieldSubmitted: () => FocusScope.of(context).requestFocus(_servingFocusNode),
             ),
             FormInput(
               title: 'Serving',
               controller: _servingController,
-              handleFieldSubmitted: () =>
-                  FocusScope.of(context).requestFocus(_preparationTimeNode),
+              handleFieldSubmitted: () => FocusScope.of(context).requestFocus(_preparationTimeNode),
               keyboardType: TextInputType.number,
             ),
             FormInput(
               title: 'Preparation Time',
               controller: _preparationTimeController,
-              handleFieldSubmitted: () =>
-                  FocusScope.of(context).requestFocus(_cookingTimeNode),
+              handleFieldSubmitted: () => FocusScope.of(context).requestFocus(_cookingTimeNode),
               keyboardType: TextInputType.number,
             ),
             FormInput(
@@ -221,9 +213,7 @@ class _CreateFoodScreenState extends State<CreateFoodScreen> {
             FromDropDown(
               title: 'Course',
               initialValue: courseValue,
-              dropDownItems: Courses.values
-                  .map((name) => name.toString().split('.').elementAt(1))
-                  .map<DropdownMenuItem<String>>((String value) {
+              dropDownItems: Courses.values.map((name) => name.toString().split('.').elementAt(1)).map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Text(value),
@@ -234,9 +224,7 @@ class _CreateFoodScreenState extends State<CreateFoodScreen> {
             FromDropDown(
               title: 'Cuisine',
               initialValue: cuisineValue,
-              dropDownItems: Cuisine.values
-                  .map((name) => name.toString().split('.').elementAt(1))
-                  .map<DropdownMenuItem<String>>((String value) {
+              dropDownItems: Cuisine.values.map((name) => name.toString().split('.').elementAt(1)).map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Text(value),
@@ -247,9 +235,7 @@ class _CreateFoodScreenState extends State<CreateFoodScreen> {
             FromDropDown(
               title: 'Affordability',
               initialValue: affordabilityValue,
-              dropDownItems: Affordability.values
-                  .map((name) => name.toString().split('.').elementAt(1))
-                  .map<DropdownMenuItem<String>>((String value) {
+              dropDownItems: Affordability.values.map((name) => name.toString().split('.').elementAt(1)).map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Text(value),
@@ -260,9 +246,7 @@ class _CreateFoodScreenState extends State<CreateFoodScreen> {
             FromDropDown(
               title: 'Difficulty',
               initialValue: difficultyValue,
-              dropDownItems: Difficulty.values
-                  .map((name) => name.toString().split('.').elementAt(1))
-                  .map<DropdownMenuItem<String>>((String value) {
+              dropDownItems: Difficulty.values.map((name) => name.toString().split('.').elementAt(1)).map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Text(value),
@@ -284,20 +268,16 @@ class _CreateFoodScreenState extends State<CreateFoodScreen> {
                       children: _ingredients
                           .map(
                             (ingredient) => Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 40.0),
+                              padding: const EdgeInsets.symmetric(horizontal: 40.0),
                               child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Headline5(ingredient),
                                   IconButton(
                                     onPressed: () => setState(
                                       () {
                                         _ingredients.remove(ingredient);
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                                _successfullyDeletedSnackbar);
+                                        ScaffoldMessenger.of(context).showSnackBar(_successfullyDeletedSnackbar);
                                       },
                                     ),
                                     icon: Icon(
@@ -313,8 +293,7 @@ class _CreateFoodScreenState extends State<CreateFoodScreen> {
                     ),
                     FormInput(
                       title: 'Ingredient',
-                      handleFieldSubmitted: () =>
-                          FocusScope.of(context).requestFocus(_ingredientsNode),
+                      handleFieldSubmitted: () => FocusScope.of(context).requestFocus(_ingredientsNode),
                       controller: _ingredientsController,
                     ),
                   ],
@@ -339,20 +318,16 @@ class _CreateFoodScreenState extends State<CreateFoodScreen> {
                       children: _instructions
                           .map(
                             (instruction) => Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 40.0),
+                              padding: const EdgeInsets.symmetric(horizontal: 40.0),
                               child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Headline5(instruction),
                                   IconButton(
                                     onPressed: () => setState(
                                       () {
                                         _instructions.remove(instruction);
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                                _successfullyDeletedSnackbar);
+                                        ScaffoldMessenger.of(context).showSnackBar(_successfullyDeletedSnackbar);
                                       },
                                     ),
                                     icon: Icon(
@@ -368,8 +343,7 @@ class _CreateFoodScreenState extends State<CreateFoodScreen> {
                     ),
                     FormInput(
                       title: 'Instruction',
-                      handleFieldSubmitted: () =>
-                          FocusScope.of(context).requestFocus(_ingredientsNode),
+                      handleFieldSubmitted: () => FocusScope.of(context).requestFocus(_ingredientsNode),
                       controller: _instructionController,
                     ),
                   ],
